@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app><!-- ng-app指令作用域 -->
+    <head>
+        <script src="angular1.0.3.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body ng-controller="PhoneListCtrl"> <!-- ng-controller指令控制器方法名 -->
+    		Search: 
+        <input ng-model="query"> <!-- ng-model指令过滤器模型 -->
+        Sort by:
+        <select ng-model="orderProp"> <!-- ng-model指令排序模型 -->
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+        </select>
+        <ul>
+            <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"> <!-- ng-repeat指令循环，filter过滤器，orderBy排序 -->
+                <a href="#/phones/{{phone.id}}"><img ng-src="{{phone.imageUrl}}"></a>
+                <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+                <p>{{phone.snippet}}</p>
+            </li>
+        </ul>
+  	</body>
+</html>	
