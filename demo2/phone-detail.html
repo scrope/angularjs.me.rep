@@ -1,0 +1,28 @@
+<img ng-src="{{mainImageUrl}}"> <!-- ng-src指令：路径 -->
+<h1>{{phone.name}}</h1>
+<p>{{phone.description}}</p>
+<ul>
+    <li ng-repeat="img in phone.images">
+        <img ng-src="{{img}}" ng-click="setImage(img)"> <!-- ng-click指令：点击事件 -->
+    </li>
+</ul>
+<ul>
+    <li>
+        <span>Availability and Networks</span>
+        <dl>
+            <dt>Availability</dt>
+            <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+        </dl>
+    </li>
+        <span>Additional Features</span>
+        <dd>{{phone.additionalFeatures}}</dd>
+    </li>
+    <li>
+        <dl>
+            <dt>Infrared</dt>
+            <dd>{{phone.storage.flash | checkmark}}</dd> <!-- 过滤器checkmark -->
+            <dt>GPS</dt>
+            <dd>{{phone.storage.ram | checkmark}}</dd>
+        </dl>
+    </li>
+</ul>
