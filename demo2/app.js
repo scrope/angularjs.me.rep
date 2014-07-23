@@ -1,18 +1,13 @@
 // 自定义一个过滤器
 angular.module('phonecatFilters', []).filter('checkmark', function() {
-
 	return function(input) {
-
 		return input ? '\u2713' : '\u2718';
-
 	};
-
 });
 
 // 设置路由
 angular.module('phonecat' /*作用域*/ , ['phonecatFilters']).config(['$routeProvider',
 	function($routeProvider) {
-
 		// 路由Map
 		var map = [{
 			path: '/phones',
@@ -36,7 +31,5 @@ angular.module('phonecat' /*作用域*/ , ['phonecatFilters']).config(['$routePr
 		$routeProvider.otherwise({
 			redirectTo: '/phones'
 		});
-
 	}
-
 ]);
