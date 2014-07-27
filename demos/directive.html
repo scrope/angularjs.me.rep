@@ -1,0 +1,148 @@
+<html ng-app>
+<head>
+    <script src="angular1.0.3.js"></script>
+    <title>指令</title>
+</head>
+<style type="text/css">
+.ngClass {
+    color: blue;
+}
+
+.error {
+    background-color: red;
+}
+
+.warning {
+    background-color: yellow;
+}
+</style>
+<body>
+
+    <div ng-controller="Ctl8">
+        <h1>ng-repeat</h1><br/>
+        <p>声明重复</p><br/>
+        <ul>
+            <li ng-repeat='item in items'>{{item}}</li>
+        </ul>
+        <p></p>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl7">
+        <h1>ng-href、ng-src</h1><br/>
+        <p>声明链接地址</p><br/>
+        <a ng-href='{{address}}'> 链接 </a>
+        <button ng-click='change(1)'> 改变链接地址为baidu</button>
+        <button ng-click='change()'> 改变链接地址为oschina</button>
+        <p></p>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl6">
+        <h1>ng-hide、ng-show</h1><br/>
+        <p>声明是否可见</p><br/>
+        <p ng-hide='isHide'> 隐藏节点 </p>
+        <button ng-click='change()'> 改变隐藏状态</button>
+        <p></p>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl5">
+        <h1>ng-disabled</h1><br/>
+        <p>声明不可编辑</p><br/>
+        <input ng-disabled='isDisabled' value='不可编辑'>
+        <button ng-click='change()'> 改变编辑状态</button>
+        <p></p>
+        <hr/>
+    </div>
+    <div>
+        <h1>ng-directive-name syntax</h1><br/>
+        <p>？？？</p><br/>
+        <hr/>
+    </div>
+    <div>
+        <h1>ng-controller</h1><br/>
+        <p>声明控制器区域</p><br/>
+        
+        <p>各个控制器相对独立，参数、方法可重名</p>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl4">
+        <h1>ng-dblclick</h1><br/>
+        <p>...</p><br/>
+        <button ng-dblclick='show()'>双击事件</button>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl3">
+        <h1>ng-click</h1><br/>
+        <p>...</p><br/>
+        <button ng-click='show()'>点击事件</button>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl2">
+        <h1>ng-class</h1><br/>
+        <p>指定class</p><br/>
+        
+        <p ng-class="{error: isError, warning: isWarning}">ng-class测试</p>
+        <button ng-click='show(1)'>error</button>
+        <button ng-click='show()'>warning</button>
+        <hr/>
+    </div>
+    <div ng-controller="Ctl1">
+        <h1>ng-bind、ng-model</h1><br/>
+        <p>指定绑定数据</p><br/>
+        <input type="text" ng-model="ngBind"/>
+        <p ng-bind="ngBind"></p><br/>
+        <p >{{ngBind}}</p>
+        <hr/>
+    </div>
+    <h1>ng-app</h1><br/>
+    <p>指定作用域、边界</p>
+    <hr/>
+</body>
+    <script type="text/javascript">
+        function Ctl8($scope) {
+            $scope.items = ['item1', 'item2', 'item3', 'item4']
+        }
+        function Ctl7($scope) {
+            $scope.change = function(a) {
+                if (!!a) {
+                    $scope.address = 'http://www.baidu.com';
+                } else {
+                    $scope.address = 'http://www.oschina.net/';
+                }
+            };
+        }
+        function Ctl6($scope) {
+            $scope.change = function() {
+                $scope.isHide = !$scope.isHide;
+            };
+        }
+        function Ctl5($scope) {
+            $scope.change = function() {
+                $scope.isDisabled = !$scope.isDisabled;
+            };
+        }
+        function Ctl4($scope) {
+            $scope.show = function() {
+                alert('双击事件');
+            };
+        }
+        function Ctl3($scope) {
+            $scope.show = function() {
+                alert('点击事件');
+            };
+        }
+        function Ctl2($scope) {
+            $scope.show = function(a) {
+                if (!!a) {
+                    $scope.isError = true
+                    $scope.isWarning = false
+                } else {
+                    $scope.isError = false
+                    $scope.isWarning = true
+                }
+            };
+        }
+        function Ctl1($scope) {
+            
+        }
+  </script>
+</html>
